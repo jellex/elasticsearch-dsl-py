@@ -282,8 +282,8 @@ class Date(Field):
         if isinstance(data, date):
             return data
         if isinstance(data, integer_types):
-            # Divide by a float to preserve milliseconds on the datetime.
-            return datetime.utcfromtimestamp(data / 1000.0)
+            # Not needed divide by a float to preserve milliseconds on the datetime, because 'data' already in the required format.
+            return datetime.utcfromtimestamp(data)
 
         raise ValidationException("Could not parse date from the value (%r)" % data)
 
